@@ -346,9 +346,9 @@ PlayerSettings:
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
   m_TemplateCustomTags:
-    DESCRIPTION: 
+    DESCRIPTION: This is a WebXR game from NoveHill
     META_TAGS: 
-    NAME: 
+    NAME: VWebXR
   mobileMTRendering:
     Android: 1
     iPhone: 1
