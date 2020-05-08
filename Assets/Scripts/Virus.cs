@@ -20,8 +20,8 @@ public class Virus : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ontrigger");
-        if(other.tag == "DeathPoint")
+        Logger.Debug("ontrigger");
+        if(other.tag == "DeathPoint" || other.tag == "Hand")
         {
             Destroy(this.gameObject);
         }
