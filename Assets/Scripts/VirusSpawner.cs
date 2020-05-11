@@ -15,6 +15,9 @@ public class VirusSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.isPaused)
+            return;
+
         if (timer > beat)
         {
             Vector3 minPoint = spawnVolume.bounds.min;
@@ -23,9 +26,7 @@ public class VirusSpawner : MonoBehaviour
                 Random.Range(minPoint.x, maxPoint.x),
                 Random.Range(minPoint.y, maxPoint.y),
                 Random.Range(minPoint.z, maxPoint.z));
-            GameObject cube = Instantiate(virusStrains[Random.Range(0, virusStrains.Length - 1)], spawnPoint, Random.rotation);
-            //cube.transform.localPosition = Vector3.zero;
-            //cube.transform.Rotate(transform.forward, 90 * Random.Range(0, 4));
+            Instantiate(virusStrains[Random.Range(0, virusStrains.Length - 1)], spawnPoint, Random.rotation);
             timer -= beat;
         }
 
