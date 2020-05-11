@@ -20,8 +20,13 @@ public class GameManager : MonoBehaviour
         if (instance == null)
             instance = this;
 
-        if (!Application.isEditor)
+        if (Application.isEditor)
+        {
+            StartGame();
+        }
+        else { 
             startPanel.SetActive(true);
+        }
     }
 
     public void StartGame()

@@ -489,6 +489,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virusStrains:
   - {fileID: 1511941159116638, guid: ae1b510258c444273ab9229e62b2887a, type: 3}
+  - {fileID: 1029093121898082, guid: 3a3299b0f7fe94c7d852d0dc0baea80f, type: 3}
+  - {fileID: 1350365266739932, guid: e7d00db2f92da478babccba07ccbc07a, type: 3}
+  - {fileID: 1633683350227588, guid: 60c6f25a4630a4d2fbb6b5c4547a5873, type: 3}
   spawnVolume: {fileID: 295758270}
   beat: 2
 --- !u!1 &348190095
@@ -1021,6 +1024,16 @@ PrefabInstance:
     - target: {fileID: 4545079059221816, guid: c61e4de741d37461e85f25866d1ebd31, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 135139238002636258, guid: c61e4de741d37461e85f25866d1ebd31,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 135505933631826540, guid: c61e4de741d37461e85f25866d1ebd31,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 137037042967364456, guid: c61e4de741d37461e85f25866d1ebd31,
         type: 3}
