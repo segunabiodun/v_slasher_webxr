@@ -22,10 +22,7 @@ public class GameManager : MonoBehaviour
 
         if (Application.isEditor)
         {
-            StartGame();
-        }
-        else { 
-            startPanel.SetActive(true);
+            //StartGame();
         }
     }
 

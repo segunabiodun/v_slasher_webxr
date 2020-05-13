@@ -8,6 +8,6 @@ public class Logger : MonoBehaviour
     {
 
         UnityEngine.Debug.Log(logMsg);
-
+        
     }
 }

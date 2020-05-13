@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 87930186}
   - component: {fileID: 87930185}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: LSideB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 230226909}
   - component: {fileID: 230226908}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: RSideU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1763,6 +1763,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7a83cd6cd30154debab8665531761ca9, type: 2}
+    - target: {fileID: 8311043331543535518, guid: c61e4de741d37461e85f25866d1ebd31,
+        type: 3}
+      propertyPath: hitPointIndicator
+      value: 
+      objectReference: {fileID: 1667965529}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c61e4de741d37461e85f25866d1ebd31, type: 3}
 --- !u!1 &458805984
@@ -2059,7 +2064,7 @@ GameObject:
   - component: {fileID: 617003591}
   - component: {fileID: 617003590}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: LSideU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3278,7 +3283,7 @@ GameObject:
   - component: {fileID: 985464509}
   - component: {fileID: 985464508}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14902,6 +14907,12 @@ Transform:
   m_Father: {fileID: 159062925}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1667965529 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3788284306378683602, guid: c61e4de741d37461e85f25866d1ebd31,
+    type: 3}
+  m_PrefabInstance: {fileID: 457641333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1708661383
 GameObject:
   m_ObjectHideFlags: 0
@@ -15247,7 +15258,7 @@ GameObject:
   - component: {fileID: 1810625367}
   - component: {fileID: 1810625366}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: RSideB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

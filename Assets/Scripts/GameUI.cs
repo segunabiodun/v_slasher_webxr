@@ -2,14 +2,18 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class FPSDisplay : MonoBehaviour
+public class GameUI : MonoBehaviour
 {
 	[SerializeField] Text text;
+	[SerializeField] GameObject startPanel;
 	float deltaTime = 0.0f;
 
     private void Awake()
     {
-		text.enabled = true;
+		//if (!Application.isEditor)
+		//	startPanel.SetActive(true);
+
+        text.enabled = true;
     }
 
     void Update()
