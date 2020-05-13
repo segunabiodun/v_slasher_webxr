@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    [SerializeField] LineRenderer lineRenderer;
-    [SerializeField] GameObject hitPointIndicator;
+    [SerializeField] GameObject laserOrigin = null;
+    [SerializeField] LineRenderer lineRenderer = null;
+    [SerializeField] GameObject hitPointIndicator = null;
     public float laserMaxDistance = 5;
     public LayerMask layerMask;
 
@@ -20,21 +21,20 @@ public class Laser : MonoBehaviour
     void Update()
     {
         Vector3[] lineRendererPos = new Vector3[2];
-        lineRendererPos[0] = transform.position;
-        Ray ray = new Ray(transform.position, transform.forward);
+        lineRendererPos[0] = laserOrigin.transform.position;
+        Ray ray = new Ray(laserOrigin.transform.position, laserOrigin.transform.forward);
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit, laserMaxDistance, layerMask))
         {
-            hitPointIndicator.transform.position = hit.point;
             lineRendererPos[1] = hit.point;
             hitPointIndicator.transform.position = hit.point;
             hitPointIndicator.SetActive(true);
-            Debug.Log($"ray hit {hit.collider.gameObject.name}");
+            //Debug.Log($"ray hit {hit.collider.gameObject.name}");
         }
         else
         {
             hitPointIndicator.SetActive(false);
-            lineRendererPos[1] = transform.position + (transform.forward * laserMaxDistance);
+            lineRendererPos[1] = laserOrigin.transform.position + (laserOrigin.transform.forward * laserMaxDistance);
         }
 
         lineRenderer.SetPositions(lineRendererPos);

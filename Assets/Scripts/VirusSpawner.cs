@@ -10,7 +10,7 @@ public class VirusSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log($"vstr count: {virusStrains.Length}");
+        Logger.Debug($"vstr count: {virusStrains.Length}");
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class VirusSpawner : MonoBehaviour
                 Random.Range(minPoint.y, maxPoint.y),
                 Random.Range(minPoint.z, maxPoint.z));
             var rand = Random.Range(0, virusStrains.Length);
-            Debug.Log($"randIndex: {rand}");
+            Logger.Debug($"randIndex: {rand}");
             Instantiate(virusStrains[(int)rand], spawnPoint, Random.rotation);
             timer -= beat;
         }

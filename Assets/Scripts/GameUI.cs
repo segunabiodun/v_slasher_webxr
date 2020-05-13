@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-	[SerializeField] Text text;
+	[SerializeField] Text fpsText = null;
 	[SerializeField] GameObject startPanel;
 	float deltaTime = 0.0f;
 
@@ -13,7 +13,7 @@ public class GameUI : MonoBehaviour
 		//if (!Application.isEditor)
 		//	startPanel.SetActive(true);
 
-        text.enabled = true;
+        fpsText.enabled = true;
     }
 
     void Update()
@@ -35,6 +35,6 @@ public class GameUI : MonoBehaviour
 		float fps = 1.0f / deltaTime;
 		string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
 		//GUI.Label(rect, text, style);
-		this.text.text = text;
+		this.fpsText.text = text;
 	}
 }

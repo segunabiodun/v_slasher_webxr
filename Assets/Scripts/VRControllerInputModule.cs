@@ -11,7 +11,7 @@ public class VRControllerInputModule : BaseInputModule
     
     // debug
     public  UnityEngine.UI.Text uiDebugText;            
-    private bool m_useDebugText = false;  
+    private bool m_useDebugText = true;  
     private string[] m_debugStrings = new string[5];
     // debug
 
@@ -39,6 +39,7 @@ public class VRControllerInputModule : BaseInputModule
 
     public override void Process()
     {
+        //Debug.Log("process");
         if (m_isActive)
         {
             bool usedEvent = SendUpdateEventToSelectedObject();
@@ -86,6 +87,7 @@ public class VRControllerInputModule : BaseInputModule
             // Delta is used to define if the cursor was moved.
             // We will also use it for drag threshold calculation, for which we'll store world distance 
             // between the last and the current raycasts (will actually use sqrmagnitude for its speed).
+            //Debug.Log($"ray from {uiCamera.transform.position} in direction {uiCamera.transform.forward}");
             Ray ray = new Ray(uiCamera.transform.position, uiCamera.transform.forward);
             Vector3 hitPoint = ray.GetPoint(raycast.distance);
             m_pointerEventData.delta = new Vector2((hitPoint - m_lastRaycastHitPoint).sqrMagnitude, 0);
@@ -149,6 +151,7 @@ public class VRControllerInputModule : BaseInputModule
     // Copied from PointerInputModule
     private void ProcessMove(PointerEventData eventData)
     {
+        //Debug.Log($"Process move at {eventData.ToString()}");
         var targetGO = eventData.pointerCurrentRaycast.gameObject;
         HandlePointerExitAndEnter(eventData, targetGO);
     }

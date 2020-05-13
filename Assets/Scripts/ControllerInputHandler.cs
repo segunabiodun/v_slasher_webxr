@@ -28,6 +28,10 @@ public class ControllerInputHandler : MonoBehaviour
             GameManager.instance.StartGame();
         }
 
+        VRInputManager.SetControllerActive(true);
+        VRInputManager.SetIsControllerButtonPressed(controller.GetButton(TRIGGER_BUTTON));
+        //VRInputManager.
+
         if (controller.GetButtonUp(TRIGGER_BUTTON))
             print(hand + " controller Trigger is up!");
 

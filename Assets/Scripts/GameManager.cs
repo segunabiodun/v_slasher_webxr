@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool isPaused = true;
 
-    [SerializeField] GameObject startPanel;
+    [SerializeField] GameObject startPanel = null;
 
     private void Awake()
     {
