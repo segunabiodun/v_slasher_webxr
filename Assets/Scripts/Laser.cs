@@ -10,11 +10,17 @@ public class Laser : MonoBehaviour
     public float laserMaxDistance = 5;
     public LayerMask layerMask;
 
+    //debug
+    public Camera laserCamera = null;
+    public UnityEngine.UI.Text rayHitText;
+
     // Start is called before the first frame update
     void Start()
     {
         lineRenderer.enabled = true;
         hitPointIndicator.GetComponent<MeshRenderer>().enabled = true;
+        laserCamera.gameObject.SetActive(true);
+        laserCamera.enabled = true;
     }
 
     // Update is called once per frame
@@ -29,12 +35,14 @@ public class Laser : MonoBehaviour
             lineRendererPos[1] = hit.point;
             hitPointIndicator.transform.position = hit.point;
             hitPointIndicator.SetActive(true);
+            rayHitText.text = $"Hit {hit.collider.gameObject.name}";
             //Debug.Log($"ray hit {hit.collider.gameObject.name}");
         }
         else
         {
             hitPointIndicator.SetActive(false);
             lineRendererPos[1] = laserOrigin.transform.position + (laserOrigin.transform.forward * laserMaxDistance);
+            rayHitText.text = "-";
         }
 
         lineRenderer.SetPositions(lineRendererPos);

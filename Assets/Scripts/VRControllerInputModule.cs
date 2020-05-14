@@ -13,6 +13,7 @@ public class VRControllerInputModule : BaseInputModule
     public  UnityEngine.UI.Text uiDebugText;            
     private bool m_useDebugText = true;  
     private string[] m_debugStrings = new string[5];
+    public UnityEngine.UI.Text raycastHitText;
     // debug
 
     private bool m_isButtonPressed = false;           // true if controller's button is currently pressed, false otherwise
@@ -34,6 +35,8 @@ public class VRControllerInputModule : BaseInputModule
 
             m_useDebugText = null != uiDebugText;
             WriteDebug("Camera center: " + m_cameraCenter.ToString());
+            Debug.Log($"camera center: {m_cameraCenter}");
+            Logger.Debug($"camera center: {m_cameraCenter}");
         }
     }
 
@@ -97,7 +100,14 @@ public class VRControllerInputModule : BaseInputModule
 
             // Debug
             if (m_RaycastResultCache.Count > 0)
+            {
                 WriteDebug("Raycast hit " + raycast.gameObject.name);
+                raycastHitText.text = $"Hit {raycast.gameObject.name}";
+            }
+            else
+            {
+                raycastHitText.text = "-";
+            }
 
             m_RaycastResultCache.Clear();
         }
