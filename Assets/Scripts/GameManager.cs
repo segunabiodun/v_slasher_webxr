@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Application.targetFrameRate = 90;
+    }
+
     public void StartGame()
     {
         if (isPaused)

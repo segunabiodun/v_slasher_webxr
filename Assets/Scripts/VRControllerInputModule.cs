@@ -11,7 +11,7 @@ public class VRControllerInputModule : BaseInputModule
     
     // debug
     public  UnityEngine.UI.Text uiDebugText;            
-    private bool m_useDebugText = true;  
+    private bool m_useDebugText = false;  
     private string[] m_debugStrings = new string[5];
     public UnityEngine.UI.Text raycastHitText;
     // debug
@@ -35,7 +35,7 @@ public class VRControllerInputModule : BaseInputModule
 
             m_useDebugText = null != uiDebugText;
             WriteDebug("Camera center: " + m_cameraCenter.ToString());
-            Debug.Log($"camera center: {m_cameraCenter}");
+            //Debug.Log($"camera center: {m_cameraCenter}");
             Logger.Debug($"camera center: {m_cameraCenter}");
         }
     }

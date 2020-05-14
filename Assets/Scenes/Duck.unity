@@ -499,6 +499,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87930183}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!20 &128427421 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20930522213222284, guid: c61e4de741d37461e85f25866d1ebd31,
+    type: 3}
+  m_PrefabInstance: {fileID: 457641333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &159062924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,6 +1854,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7a83cd6cd30154debab8665531761ca9, type: 2}
+    - target: {fileID: 4546374870107166467, guid: c61e4de741d37461e85f25866d1ebd31,
+        type: 3}
+      propertyPath: m_Name
+      value: CCam
+      objectReference: {fileID: 0}
     - target: {fileID: 8311043331543535518, guid: c61e4de741d37461e85f25866d1ebd31,
         type: 3}
       propertyPath: rayHitText
@@ -2024,7 +2035,7 @@ GameObject:
   - component: {fileID: 525478075}
   - component: {fileID: 525478074}
   m_Layer: 9
-  m_Name: InputDebug
+  m_Name: CamerasText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2047,7 +2058,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -30, y: -100}
-  m_SizeDelta: {x: 290, y: 70}
+  m_SizeDelta: {x: 600, y: 70}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &525478074
 MonoBehaviour:
@@ -2070,7 +2081,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 47
+    m_FontSize: 33
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -8870,6 +8881,12 @@ Transform:
   m_Father: {fileID: 1808751316}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1204354441 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20092747195267750, guid: c61e4de741d37461e85f25866d1ebd31,
+    type: 3}
+  m_PrefabInstance: {fileID: 457641333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1209485716
 GameObject:
   m_ObjectHideFlags: 0
@@ -14632,6 +14649,18 @@ MonoBehaviour:
   startPanel: {fileID: 964927829}
   fpsText: {fileID: 441931983}
   debugButtonText: {fileID: 1983193218}
+  camerasText: {fileID: 525478074}
+  cameras:
+  - {fileID: 1204354441}
+  - {fileID: 128427421}
+  - {fileID: 1439421982}
+  - {fileID: 66666301}
+--- !u!20 &1439421982 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20572450475250664, guid: c61e4de741d37461e85f25866d1ebd31,
+    type: 3}
+  m_PrefabInstance: {fileID: 457641333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1454983079
 GameObject:
   m_ObjectHideFlags: 0
