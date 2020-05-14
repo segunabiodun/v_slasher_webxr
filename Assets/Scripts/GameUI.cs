@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Text;
 using System;
 
 public class GameUI : MonoBehaviour
 {
+	//[SerializeField] Canvas _maincanvas;
 	[SerializeField] GameObject startPanel;
 	float deltaTime = 0.0f;
 
@@ -23,6 +25,11 @@ public class GameUI : MonoBehaviour
 		//	startPanel.SetActive(true);
 
         fpsText.enabled = true;
+    }
+
+    private void Start()
+    {
+        
     }
 
     void Update()
@@ -43,6 +50,7 @@ public class GameUI : MonoBehaviour
 				sb.Append($"{camera.gameObject.name}, ");
             }
         }
+		sb.Append($"m: {Camera.main}");
 		camerasText.text = sb.ToString().Trim().Trim(',');
 	}
 

@@ -3,8 +3,8 @@ using UnityEngine.EventSystems;
 
 public class VRControllerInputModule : BaseInputModule
 {
-    [Tooltip("A camera mounted on the controller")]
-    public Camera uiCamera;
+    //[Tooltip("A camera mounted on the controller")]
+    //public Camera uiCamera;
 
     [Tooltip("The threshold is a square length at which the cursor will begin drag. Lenght is measured in world coordinates.")]
     public float dragThreshold = 0.1f;
@@ -20,7 +20,7 @@ public class VRControllerInputModule : BaseInputModule
     private bool m_isButtonPressedChanged = false;    // true if controller's button was pressed or released during the last frame
     private float m_pressedDistance;                // Distance the cursor travelled while pressed.
 
-    private Vector2 m_cameraCenter;
+    //private Vector2 m_cameraCenter;
     private Vector3 m_lastRaycastHitPoint;
     private PointerEventData m_pointerEventData;
     private bool m_isActive = false;
@@ -28,7 +28,7 @@ public class VRControllerInputModule : BaseInputModule
     protected override void Start()
     {
         base.Start();
-        if (null != uiCamera)
+        /*if (null != uiCamera)
         {
             m_isActive = true;
             m_cameraCenter = new Vector2(uiCamera.pixelWidth / 2, uiCamera.pixelHeight / 2);
@@ -37,7 +37,10 @@ public class VRControllerInputModule : BaseInputModule
             WriteDebug("Camera center: " + m_cameraCenter.ToString());
             //Debug.Log($"camera center: {m_cameraCenter}");
             Logger.Debug($"camera center: {m_cameraCenter}");
-        }
+        }*/
+
+        m_isActive = true;
+        m_useDebugText = null != uiDebugText;
     }
 
     public override void Process()
@@ -80,7 +83,8 @@ public class VRControllerInputModule : BaseInputModule
 
         if (VRInputManager.GetControllerActive())
         {
-            m_pointerEventData.position = m_cameraCenter;
+            //m_pointerEventData.position = m_cameraCenter;
+            m_pointerEventData.position = Laser.laserScreenPos;
 
             m_pointerEventData.scrollDelta = Vector2.zero;
             m_pointerEventData.button = PointerEventData.InputButton.Left;
@@ -91,10 +95,16 @@ public class VRControllerInputModule : BaseInputModule
             // We will also use it for drag threshold calculation, for which we'll store world distance 
             // between the last and the current raycasts (will actually use sqrmagnitude for its speed).
             //Debug.Log($"ray from {uiCamera.transform.position} in direction {uiCamera.transform.forward}");
+
+            /*by me
             Ray ray = new Ray(uiCamera.transform.position, uiCamera.transform.forward);
             Vector3 hitPoint = ray.GetPoint(raycast.distance);
             m_pointerEventData.delta = new Vector2((hitPoint - m_lastRaycastHitPoint).sqrMagnitude, 0);
             m_lastRaycastHitPoint = hitPoint;
+            */
+
+            m_pointerEventData.delta = new Vector2((Laser.laserHitPoint - m_lastRaycastHitPoint).sqrMagnitude, 0);
+            m_lastRaycastHitPoint = Laser.laserHitPoint;
 
             m_pointerEventData.pointerCurrentRaycast = raycast;
 

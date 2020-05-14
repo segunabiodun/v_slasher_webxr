@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 240653653}
   - component: {fileID: 240653652}
   - component: {fileID: 240653651}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CanvasCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1854,16 +1854,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7a83cd6cd30154debab8665531761ca9, type: 2}
+    - target: {fileID: 3782356860511260899, guid: c61e4de741d37461e85f25866d1ebd31,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782356860511260899, guid: c61e4de741d37461e85f25866d1ebd31,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.018119972
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782356860511260899, guid: c61e4de741d37461e85f25866d1ebd31,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
+      value: 0.42462313
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782356860511260899, guid: c61e4de741d37461e85f25866d1ebd31,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4546374870107166467, guid: c61e4de741d37461e85f25866d1ebd31,
         type: 3}
       propertyPath: m_Name
       value: CCam
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546374870107166467, guid: c61e4de741d37461e85f25866d1ebd31,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8311043331543535518, guid: c61e4de741d37461e85f25866d1ebd31,
         type: 3}
       propertyPath: rayHitText
       value: 
       objectReference: {fileID: 1188093169}
+    - target: {fileID: 8311043331543535518, guid: c61e4de741d37461e85f25866d1ebd31,
+        type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1422242553}
     - target: {fileID: 8570500767910506712, guid: c61e4de741d37461e85f25866d1ebd31,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -14602,7 +14632,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 66666301}
+  m_Camera: {fileID: 1204354441}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -16306,7 +16336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948afd81d1da3465b940c2f77d4bf162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiCamera: {fileID: 66666301}
   dragThreshold: 0.1
   uiDebugText: {fileID: 525478074}
   raycastHitText: {fileID: 2014370742}
