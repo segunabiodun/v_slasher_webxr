@@ -16,7 +16,7 @@ public class VirusSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.isPaused)
+        if (GameManager.isPaused)
             return;
 
         if (timer > beat)

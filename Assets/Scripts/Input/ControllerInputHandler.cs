@@ -10,6 +10,10 @@ public class ControllerInputHandler : MonoBehaviour
 
     private WebXRController controller;
 
+
+    public bool triggerButtonDown = false;
+    public bool triggerButtonPressed = false;
+
     void Awake()
     {
         // Retrieve the WebXRController component.
@@ -22,21 +26,27 @@ public class ControllerInputHandler : MonoBehaviour
         WebXRControllerHand hand = controller.hand;
 
         // GetButtonDown and GetButtonUp:
-        if (controller.GetButtonDown(TRIGGER_BUTTON))
+        triggerButtonDown = controller.GetButtonDown(TRIGGER_BUTTON);
+        if (triggerButtonDown)
         {
-            print(hand + " controller Trigger is down!");
-            GameManager.instance.StartGame();
+            Debug.Log(hand + " controller Trigger is down!");
+            //GameManager.instance.StartGame();
         }
-
-        VRInputManager.SetControllerActive(true);
-        VRInputManager.SetIsControllerButtonPressed(controller.GetButton(TRIGGER_BUTTON));
-        //VRInputManager.
 
         if (controller.GetButtonUp(TRIGGER_BUTTON))
             print(hand + " controller Trigger is up!");
+
+        triggerButtonPressed = controller.GetButton(TRIGGER_BUTTON);
 
         // GetAxis:
         if (controller.GetAxis(GRIP_BUTTON) > 0)
             print(hand + " controller Grip value: " + controller.GetAxis("Grip"));
     }
+
+
+
+    //public bool GetIsControllerButtonPressed()
+    //{
+    //    return controller.GetButton(TRIGGER_BUTTON);
+    //}
 }

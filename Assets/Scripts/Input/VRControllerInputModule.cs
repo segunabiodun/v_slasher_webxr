@@ -6,6 +6,9 @@ public class VRControllerInputModule : BaseInputModule
     //[Tooltip("A camera mounted on the controller")]
     //public Camera uiCamera;
 
+    //[SerializeField] ControllerInputHandler controllerInputHandler = null;
+    [SerializeField] VRInputManager vrInputManager;
+
     [Tooltip("The threshold is a square length at which the cursor will begin drag. Lenght is measured in world coordinates.")]
     public float dragThreshold = 0.1f;
     
@@ -23,7 +26,13 @@ public class VRControllerInputModule : BaseInputModule
     //private Vector2 m_cameraCenter;
     private Vector3 m_lastRaycastHitPoint;
     private PointerEventData m_pointerEventData;
-    private bool m_isActive = false;
+    private bool m_isActive
+    {
+        get
+        {
+            return GameManager.isPaused;
+        }
+    }
 
     protected override void Start()
     {
@@ -39,7 +48,6 @@ public class VRControllerInputModule : BaseInputModule
             Logger.Debug($"camera center: {m_cameraCenter}");
         }*/
 
-        m_isActive = true;
         m_useDebugText = null != uiDebugText;
     }
 
@@ -58,10 +66,10 @@ public class VRControllerInputModule : BaseInputModule
     private void MyUpdateControllerData()
     {
         m_isButtonPressedChanged = false;
-        if (m_isButtonPressed != VRInputManager.GetIsControllerButtonPressed())
+        if (m_isButtonPressed != vrInputManager.IsAnyTriggerPressed())
         {
             m_isButtonPressedChanged = true;
-            m_isButtonPressed = VRInputManager.GetIsControllerButtonPressed();
+            m_isButtonPressed = vrInputManager.IsAnyTriggerPressed();
         }
     }
 
@@ -81,7 +89,7 @@ public class VRControllerInputModule : BaseInputModule
         if (null == m_pointerEventData)
             m_pointerEventData = new PointerEventData(eventSystem);
 
-        if (VRInputManager.GetControllerActive())
+        if (vrInputManager.IsAnyControllerActive())
         {
             //m_pointerEventData.position = m_cameraCenter;
             m_pointerEventData.position = Laser.laserScreenPos;

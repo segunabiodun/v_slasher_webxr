@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     /// https://stackoverflow.com/a/35891919/9261590 for how to implement this.
     /// </summary>
     public static GameManager instance;
-    public bool isPaused = true;
+    public static bool isPaused = true;
 
     [SerializeField] GameObject startPanel = null;
 
@@ -24,11 +24,6 @@ public class GameManager : MonoBehaviour
         {
             //StartGame();
         }
-    }
-
-    private void Start()
-    {
-        //Application.targetFrameRate = 60;
     }
 
     public void StartGame()

@@ -8,7 +8,7 @@ public class Virus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.isPaused)
+        if (GameManager.isPaused)
             return;
 
         transform.position += Time.deltaTime * Vector3.forward * 2;
@@ -23,5 +23,11 @@ public class Virus : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void DieFromShot()
+    {
+        Slicer.SplitMesh(gameObject, transform);
+        Destroy(gameObject);
     }
 }

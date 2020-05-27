@@ -8,11 +8,18 @@ public class Laser : MonoBehaviour
     [SerializeField] LineRenderer lineRenderer = null;
     [SerializeField] GameObject hitPointIndicator = null;
     [SerializeField] Canvas mainCanvas = null;
-    float laserMaxDistance = 5;
+    float distanceToCanvas = 1;
+    float laserMaxDistance {
+        get
+        {
+            return GameManager.isPaused ? distanceToCanvas : 10;
+        }
+    }
     public LayerMask layerMask;
 
     public static Vector3 laserHitPoint { get; private set; }
     public static Vector2 laserScreenPos { get; private set; }
+    public GameObject hit3DObject;
 
     //debug
     public UnityEngine.UI.Text rayHitText;
@@ -22,13 +29,16 @@ public class Laser : MonoBehaviour
     {
         lineRenderer.enabled = true;
         hitPointIndicator.GetComponent<MeshRenderer>().enabled = true;
-        /* Set laser max distance to the distance between the canvas and the
+        /*
+         * Set laser max distance to the distance between the canvas and the
          the camera. This is necessary because if the ray goes beyond the
         canvas and it ends/ccollides at a point whose line of sight from the camera
         passes through the canvas, it would be wrongly seen as being on the canvas
         when Camera.WorldPointToScreen is called.*/
+
+        //TODO: Don't send point to EventSysteminstead.
         //should be updated every frame
-        laserMaxDistance = Vector3.Distance(laserOrigin.transform.position,
+        distanceToCanvas = Vector3.Distance(laserOrigin.transform.position,
             mainCanvas.transform.position);
     }
 
@@ -47,6 +57,7 @@ public class Laser : MonoBehaviour
             rayHitText.text = $"Hit {hit.collider.gameObject.name}";
             //Debug.Log($"ray hit {hit.collider.gameObject.name}");
             laserHitPoint = hit.point;
+            hit3DObject = hit.collider.gameObject;
         }
         else
         {
@@ -54,6 +65,7 @@ public class Laser : MonoBehaviour
             laserHitPoint = laserOrigin.transform.position + (laserOrigin.transform.forward * laserMaxDistance);
             lineRendererPos[1] = laserHitPoint;
             rayHitText.text = "-";
+            hit3DObject = null;
         }
         laserScreenPos = mainCanvas.worldCamera.WorldToScreenPoint(laserHitPoint);
         lineRenderer.SetPositions(lineRendererPos);
