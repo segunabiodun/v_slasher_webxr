@@ -11,8 +11,8 @@ public class ControllerInputHandler : MonoBehaviour
     private WebXRController controller;
 
 
-    public bool triggerButtonDown = false;
-    public bool triggerButtonPressed = false;
+    public bool triggerButtonDown /*{ get; private set; }*/ = false;
+    public bool triggerButton = false;
 
     void Awake()
     {
@@ -36,7 +36,7 @@ public class ControllerInputHandler : MonoBehaviour
         if (controller.GetButtonUp(TRIGGER_BUTTON))
             print(hand + " controller Trigger is up!");
 
-        triggerButtonPressed = controller.GetButton(TRIGGER_BUTTON);
+        triggerButton = controller.GetButton(TRIGGER_BUTTON);
 
         // GetAxis:
         if (controller.GetAxis(GRIP_BUTTON) > 0)

@@ -8,16 +8,18 @@ using System;
 public class GameUI : MonoBehaviour
 {
 	//[SerializeField] Canvas _maincanvas;
-	[SerializeField] GameObject startPanel;
+	[SerializeField] GameObject startPanel = null;
+	[SerializeField] GameObject canvasColliderGO = null;
+	[SerializeField] Text scoreText;
 	float deltaTime = 0.0f;
+
 
     //debug
 	[SerializeField] Text fpsText = null;
 	[SerializeField] Text debugButtonText = null;
 	[SerializeField] Text camerasText = null;
 	[SerializeField] Camera[] cameras = null;
-
-	int buttonClickCount = 0;
+	int debugButtonClickCount = 0;
 
 	private void Awake()
     {
@@ -52,11 +54,24 @@ public class GameUI : MonoBehaviour
         }
 		sb.Append($"m: {Camera.main}");
 		camerasText.text = sb.ToString().Trim().Trim(',');
+
+		scoreText.text = $"{GameManager.score}";
 	}
 
     public void debugButtonClicked()
     {
-		buttonClickCount += 1;
-		debugButtonText.text = $"Clicked {buttonClickCount}";
+		debugButtonClickCount += 1;
+		debugButtonText.text = $"Clicked {debugButtonClickCount}";
     }
+
+    public void OnStartGameClicked()
+    {
+		GameManager.instance.StartGame();
+    }
+
+    public void UpdateForStartGame()
+    {
+		startPanel.SetActive(false);
+		canvasColliderGO.SetActive(false);
+	}
 }

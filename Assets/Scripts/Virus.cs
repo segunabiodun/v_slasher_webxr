@@ -3,6 +3,8 @@
 public class Virus : MonoBehaviour
 {
     public float rotationAmount = 40;
+    public bool stayStill = false;
+    public bool isAlive = true;
     
 
     // Update is called once per frame
@@ -11,8 +13,11 @@ public class Virus : MonoBehaviour
         if (GameManager.isPaused)
             return;
 
-        transform.position += Time.deltaTime * Vector3.forward * 2;
-        transform.Rotate( Time.deltaTime * Vector3.right * rotationAmount);
+        if (!stayStill)
+        {
+            transform.position += Time.deltaTime * Vector3.forward * 2;
+            transform.Rotate(Time.deltaTime * Vector3.right * rotationAmount);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

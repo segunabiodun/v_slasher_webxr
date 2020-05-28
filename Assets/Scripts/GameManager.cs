@@ -12,17 +12,19 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public static GameManager instance;
     public static bool isPaused = true;
+    public static int score = 0;
 
-    [SerializeField] GameObject startPanel = null;
+    [SerializeField] GameUI gameUI;
 
     private void Awake()
     {
         if (instance == null)
             instance = this;
 
+        //DEBUG: 
         if (Application.isEditor)
         {
-            //StartGame();
+            StartGame();
         }
     }
 
@@ -30,8 +32,8 @@ public class GameManager : MonoBehaviour
     {
         if (isPaused)
         {
-            startPanel.SetActive(false);
             isPaused = false;
+            gameUI.UpdateForStartGame();
         }
     }
 }

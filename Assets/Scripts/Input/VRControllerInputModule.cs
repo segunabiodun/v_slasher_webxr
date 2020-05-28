@@ -7,7 +7,7 @@ public class VRControllerInputModule : BaseInputModule
     //public Camera uiCamera;
 
     //[SerializeField] ControllerInputHandler controllerInputHandler = null;
-    [SerializeField] VRInputManager vrInputManager;
+    [SerializeField] VRInputManager vrInputManager = null;
 
     [Tooltip("The threshold is a square length at which the cursor will begin drag. Lenght is measured in world coordinates.")]
     public float dragThreshold = 0.1f;
@@ -26,13 +26,7 @@ public class VRControllerInputModule : BaseInputModule
     //private Vector2 m_cameraCenter;
     private Vector3 m_lastRaycastHitPoint;
     private PointerEventData m_pointerEventData;
-    private bool m_isActive
-    {
-        get
-        {
-            return GameManager.isPaused;
-        }
-    }
+    private bool m_isActive = true;
 
     protected override void Start()
     {
@@ -56,7 +50,7 @@ public class VRControllerInputModule : BaseInputModule
         //Debug.Log("process");
         if (m_isActive)
         {
-            bool usedEvent = SendUpdateEventToSelectedObject();
+            SendUpdateEventToSelectedObject();
 
             MyUpdateControllerData();
             ProcessControllerEvent();
@@ -66,10 +60,10 @@ public class VRControllerInputModule : BaseInputModule
     private void MyUpdateControllerData()
     {
         m_isButtonPressedChanged = false;
-        if (m_isButtonPressed != vrInputManager.IsAnyTriggerPressed())
+        if (m_isButtonPressed != vrInputManager.IsAnyTriggerStillPressed())
         {
             m_isButtonPressedChanged = true;
-            m_isButtonPressed = vrInputManager.IsAnyTriggerPressed();
+            m_isButtonPressed = vrInputManager.IsAnyTriggerStillPressed();
         }
     }
 
@@ -113,6 +107,7 @@ public class VRControllerInputModule : BaseInputModule
 
             m_pointerEventData.delta = new Vector2((Laser.laserHitPoint - m_lastRaycastHitPoint).sqrMagnitude, 0);
             m_lastRaycastHitPoint = Laser.laserHitPoint;
+            //Debug.Log($"laser hitpoint {Laser.laserHitPoint}");
 
             m_pointerEventData.pointerCurrentRaycast = raycast;
 

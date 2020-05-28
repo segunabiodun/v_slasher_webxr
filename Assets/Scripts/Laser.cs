@@ -8,13 +8,15 @@ public class Laser : MonoBehaviour
     [SerializeField] LineRenderer lineRenderer = null;
     [SerializeField] GameObject hitPointIndicator = null;
     [SerializeField] Canvas mainCanvas = null;
+    public float laserMaxDistance = 1000;
     float distanceToCanvas = 1;
-    float laserMaxDistance {
-        get
-        {
-            return GameManager.isPaused ? distanceToCanvas : 10;
-        }
-    }
+    //float laserMaxDistance {
+    //    get
+    //    {
+    //        return 1000;
+    //        //return GameManager.isPaused ? distanceToCanvas : 10;
+    //    }
+    //}
     public LayerMask layerMask;
 
     public static Vector3 laserHitPoint { get; private set; }
