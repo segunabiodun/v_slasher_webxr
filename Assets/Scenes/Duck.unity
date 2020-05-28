@@ -654,6 +654,12 @@ Transform:
   m_Father: {fileID: 870404775}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -120}
+--- !u!82 &225500880 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6276550919194613578, guid: 10c1101c365624468b0783254f376791,
+    type: 3}
+  m_PrefabInstance: {fileID: 6336512933050249217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &228901068
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,6 +2087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vrInputManager: {fileID: 1948604535}
   laser: {fileID: 425676387}
+  audioSource: {fileID: 225500880}
 --- !u!1 &609555527
 GameObject:
   m_ObjectHideFlags: 0
@@ -16982,7 +16989,7 @@ PrefabInstance:
     - target: {fileID: 6334991784675216672, guid: 10c1101c365624468b0783254f376791,
         type: 3}
       propertyPath: m_Name
-      value: CustomWebXRCameraSet
+      value: WebXRCameraSet
       objectReference: {fileID: 0}
     - target: {fileID: 6341056494454894668, guid: 10c1101c365624468b0783254f376791,
         type: 3}
