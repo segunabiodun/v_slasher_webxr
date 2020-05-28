@@ -6,6 +6,7 @@ public class Shooter : MonoBehaviour
 {
     [SerializeField] VRInputManager vrInputManager = null;
     [SerializeField] Laser laser = null;
+    [SerializeField] AudioSource audioSource;
 
     //public bool fakeTriggerDown = false;
 
@@ -15,14 +16,17 @@ public class Shooter : MonoBehaviour
         if (GameManager.isPaused)
             return;
 
+        if(vrInputManager.IsAnyTriggerDown())
+        {
+            audioSource.Play();
+        }
 
         //if (fakeTriggerDown && laser.hit3DObject)
-        if (laser.hit3DObject)
+        if (vrInputManager.IsAnyTriggerDown() && laser.hit3DObject)
         {
             Virus virus = laser.hit3DObject.GetComponent<Virus>();
             if (virus)
                 OnVirusShot(virus);
-
         }
 
     }
