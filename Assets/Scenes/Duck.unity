@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.3587269, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,8 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 99e876e84f9724d6cb4432241e72f5d0,
-    type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
@@ -2103,7 +2102,7 @@ MonoBehaviour:
   canvasCollider: {fileID: 240653650}
   virusSpawner: {fileID: 295758268}
   virusDeathPoint: {fileID: 1502797717}
-  moveSpeed: 2
+  playerMoveSpeed: 1
 --- !u!1 &609555527
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class Virus : MonoBehaviour
     public float rotationAmount = 40;
     public bool isAlive = true;
     public int splitLevel = 0;
-    int MAX_SPLIT_LEVEL = 2;
+    int MAX_SPLIT_LEVEL = 1;
     public bool isSplit = false;
 
     //DEBUG:
@@ -47,7 +47,7 @@ public class Virus : MonoBehaviour
     public void DieFromShot()
     {
         splitLevel = 1;
-        //Slicer.SplitMesh(gameObject, transform);
+        Slicer.SplitMesh(gameObject, transform);
         isSplit = true;
         Destroy(gameObject);
     }

@@ -16,7 +16,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] GameObject virusSpawner;
     [SerializeField] GameObject virusDeathPoint;
 
-    public float moveSpeed = 2;
+    public float playerMoveSpeed = 1;
 
     // Update is called once per frame
     void Update()
@@ -39,11 +39,11 @@ public class Shooter : MonoBehaviour
 
         //move the player gradually
 
-        playerRig.transform.position += Vector3.back * moveSpeed * Time.deltaTime;
-        virusSpawner.transform.position += Vector3.back * moveSpeed * Time.deltaTime;
-        canvas.transform.position += Vector3.back * moveSpeed * Time.deltaTime;
-        canvasCollider.transform.position += Vector3.back * moveSpeed * Time.deltaTime;
-        virusDeathPoint.transform.position += Vector3.back * moveSpeed * Time.deltaTime;
+        playerRig.transform.position += Vector3.back * playerMoveSpeed * Time.deltaTime;
+        virusSpawner.transform.position += Vector3.back * playerMoveSpeed * Time.deltaTime;
+        canvas.transform.position += Vector3.back * playerMoveSpeed * Time.deltaTime;
+        canvasCollider.transform.position += Vector3.back * playerMoveSpeed * Time.deltaTime;
+        virusDeathPoint.transform.position += Vector3.back * playerMoveSpeed * Time.deltaTime;
 
     }
 

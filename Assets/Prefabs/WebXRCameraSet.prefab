@@ -200,7 +200,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.018119972
+        value: 0.008552711
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1963,7 +1963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6340642240410952206
 Transform:
   m_ObjectHideFlags: 0
@@ -2350,7 +2350,7 @@ PrefabInstance:
     - target: {fileID: 7404198443098879974, guid: 8fea7c6fc6ff2403f9cdb3b50b97e8d9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8077593401559876361, guid: 8fea7c6fc6ff2403f9cdb3b50b97e8d9,
         type: 3}
