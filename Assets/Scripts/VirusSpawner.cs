@@ -4,8 +4,8 @@ public class VirusSpawner : MonoBehaviour
 {
 	public GameObject[] virusStrains;
     public BoxCollider spawnVolume;
-	public float beat;
-	private float timer;	
+	public float spawnInterval = 2;
+	private float timeSinceLastSpawn;	
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class VirusSpawner : MonoBehaviour
         if (GameManager.isPaused)
             return;
 
-        if (timer > beat)
+        if (timeSinceLastSpawn >= spawnInterval)
         {
             Vector3 minPoint = spawnVolume.bounds.min;
             Vector3 maxPoint = spawnVolume.bounds.max;
@@ -30,9 +30,9 @@ public class VirusSpawner : MonoBehaviour
             var rand = Random.Range(0, virusStrains.Length);
             Logger.Debug($"randIndex: {rand}");
             Instantiate(virusStrains[(int)rand], spawnPoint, Random.rotation);
-            timer -= beat;
+            timeSinceLastSpawn = 0;
         }
 
-        timer += Time.deltaTime;
+        timeSinceLastSpawn += Time.deltaTime;
     }
 }

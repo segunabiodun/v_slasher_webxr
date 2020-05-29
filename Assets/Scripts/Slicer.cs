@@ -53,7 +53,7 @@ public class Slicer
     //}
 
     // Get a cutting plane from the rotation/position of the saber
-    private static Plane GetPlane(GameObject go, Transform goTransform)
+    private static Plane GetCuttingPlane(Transform goTransform)
     {
         // 1.
         Vector3 pt1 = goTransform.rotation * new Vector3(0, 0, 0);
@@ -100,7 +100,7 @@ public class Slicer
         MeshFilter filter = half.GetComponent<MeshFilter>();
 
         // 2.
-        Plane cuttingPlane = GetPlane(go, cuttingPlaneTransform);
+        Plane cuttingPlane = GetCuttingPlane(cuttingPlaneTransform);
         filter.mesh = CloneMesh(cuttingPlane, filter.mesh, isLeft);
 
         // 3.
@@ -116,10 +116,11 @@ public class Slicer
     }
 
     // Make two GameObjects with "halves" of the original
-    public static void SplitMesh(GameObject go, Transform cuttingPlaneTransform)
+    public static GameObject[] SplitMesh(GameObject go, Transform cuttingPlaneTransform)
     {
         // 1.
         GameObject leftHalf = MakeHalf(go, cuttingPlaneTransform, true);
         GameObject rightHalf = MakeHalf(go, cuttingPlaneTransform, false);
+        return new GameObject[]{ leftHalf, rightHalf};
     }
 }

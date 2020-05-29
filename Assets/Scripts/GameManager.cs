@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public static int score = 0;
 
     [SerializeField] GameUI gameUI;
+    [SerializeField] Shooter shooter;
 
     private void Awake()
     {
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         if (isPaused)
         {
+            shooter.InitializeShooterMode();
             isPaused = false;
             gameUI.UpdateForStartGame();
         }

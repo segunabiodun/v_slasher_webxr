@@ -2,10 +2,16 @@
 
 public class Virus : MonoBehaviour
 {
+    public float moveSpeed = 5;
     public float rotationAmount = 40;
-    public bool stayStill = false;
     public bool isAlive = true;
-    
+    public int splitLevel = 0;
+    int MAX_SPLIT_LEVEL = 2;
+    public bool isSplit = false;
+
+    //DEBUG:
+    public bool stayStill = false;
+
 
     // Update is called once per frame
     void Update()
@@ -15,8 +21,16 @@ public class Virus : MonoBehaviour
 
         if (!stayStill)
         {
-            transform.position += Time.deltaTime * Vector3.forward * 2;
+            transform.position += Time.deltaTime * Vector3.forward * moveSpeed;
             transform.Rotate(Time.deltaTime * Vector3.right * rotationAmount);
+        }
+
+        //keep disintegrating for more impact effect
+        if(!isAlive && !isSplit && splitLevel < MAX_SPLIT_LEVEL)
+        {
+            splitLevel += 1;
+            Slicer.SplitMesh(gameObject, transform);
+            isSplit = true;
         }
     }
 
@@ -32,7 +46,9 @@ public class Virus : MonoBehaviour
 
     public void DieFromShot()
     {
-        Slicer.SplitMesh(gameObject, transform);
+        splitLevel = 1;
+        //Slicer.SplitMesh(gameObject, transform);
+        isSplit = true;
         Destroy(gameObject);
     }
 }

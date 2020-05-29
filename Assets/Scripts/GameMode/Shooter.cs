@@ -7,8 +7,16 @@ public class Shooter : MonoBehaviour
     [SerializeField] VRInputManager vrInputManager = null;
     [SerializeField] Laser laser = null;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] GameObject leftHandModel;
+    [SerializeField] GameObject righHandModel;
+    [SerializeField] GameObject gun;
+    [SerializeField] GameObject playerRig;
+    [SerializeField] GameObject canvas;
+    [SerializeField] GameObject canvasCollider;
+    [SerializeField] GameObject virusSpawner;
+    [SerializeField] GameObject virusDeathPoint;
 
-    //public bool fakeTriggerDown = false;
+    public float moveSpeed = 2;
 
     // Update is called once per frame
     void Update()
@@ -21,7 +29,7 @@ public class Shooter : MonoBehaviour
             audioSource.Play();
         }
 
-        //if (fakeTriggerDown && laser.hit3DObject)
+        //if (laser.hit3DObject)
         if (vrInputManager.IsAnyTriggerDown() && laser.hit3DObject)
         {
             Virus virus = laser.hit3DObject.GetComponent<Virus>();
@@ -29,6 +37,21 @@ public class Shooter : MonoBehaviour
                 OnVirusShot(virus);
         }
 
+        //move the player gradually
+
+        playerRig.transform.position += Vector3.back * moveSpeed * Time.deltaTime;
+        virusSpawner.transform.position += Vector3.back * moveSpeed * Time.deltaTime;
+        canvas.transform.position += Vector3.back * moveSpeed * Time.deltaTime;
+        canvasCollider.transform.position += Vector3.back * moveSpeed * Time.deltaTime;
+        virusDeathPoint.transform.position += Vector3.back * moveSpeed * Time.deltaTime;
+
+    }
+
+    public void InitializeShooterMode()
+    {
+        leftHandModel.SetActive(true);
+        righHandModel.SetActive(false);
+        gun.SetActive(true);
     }
 
     void OnVirusShot(Virus virus)
@@ -38,7 +61,7 @@ public class Shooter : MonoBehaviour
             Debug.Log($"OnVirusShot {virus.gameObject.name}");
             virus.isAlive = false;
             GameManager.score += 1;
+            virus.DieFromShot();
         }
-        virus.DieFromShot();
     }
 }
