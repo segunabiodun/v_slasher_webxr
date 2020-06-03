@@ -6,15 +6,15 @@ public class Shooter : MonoBehaviour
 {
     [SerializeField] VRInputManager vrInputManager = null;
     [SerializeField] Laser laser = null;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] GameObject leftHandModel;
-    [SerializeField] GameObject righHandModel;
-    [SerializeField] GameObject gun;
-    [SerializeField] GameObject playerRig;
-    [SerializeField] GameObject canvas;
-    [SerializeField] GameObject canvasCollider;
-    [SerializeField] GameObject virusSpawner;
-    [SerializeField] GameObject virusDeathPoint;
+    [SerializeField] AudioSource audioSource = null;
+    //[SerializeField] GameObject leftHandModel;
+    //[SerializeField] GameObject righHandModel;
+    //[SerializeField] GameObject gun;
+    [SerializeField] GameObject playerRig = null;
+    [SerializeField] GameObject canvas = null;
+    [SerializeField] GameObject canvasCollider = null;
+    [SerializeField] GameObject virusSpawner = null;
+    [SerializeField] GameObject virusDeathPoint = null;
 
     public float playerMoveSpeed = 1;
 
@@ -49,9 +49,9 @@ public class Shooter : MonoBehaviour
 
     public void InitializeShooterMode()
     {
-        leftHandModel.SetActive(true);
-        righHandModel.SetActive(false);
-        gun.SetActive(true);
+        //leftHandModel.SetActive(true);
+        //righHandModel.SetActive(false);
+        //gun.SetActive(true);
     }
 
     void OnVirusShot(Virus virus)

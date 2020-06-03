@@ -10,7 +10,7 @@ public class GameUI : MonoBehaviour
 	//[SerializeField] Canvas _maincanvas;
 	[SerializeField] GameObject startPanel = null;
 	[SerializeField] GameObject canvasColliderGO = null;
-	[SerializeField] Text scoreText;
+	[SerializeField] Text scoreText = null;
 	float deltaTime = 0.0f;
 
 

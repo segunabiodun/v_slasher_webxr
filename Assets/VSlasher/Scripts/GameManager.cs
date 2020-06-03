@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     public static bool isPaused = true;
     public static int score = 0;
 
-    [SerializeField] GameUI gameUI;
-    [SerializeField] Shooter shooter;
+    [SerializeField] GameUI gameUI = null;
+    [SerializeField] Shooter shooter = null;
 
     private void Awake()
     {
