@@ -1,15 +1,21 @@
-﻿#if UNITY_EDITOR
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using WebXR;
+//using WebXR;
+
+    enum Hand
+{
+    Left,
+    Right
+}
 
 public class ControllerInputHandler : MonoBehaviour
 {
-    private readonly string TRIGGER_BUTTON = "Trigger";
-    private readonly string GRIP_BUTTON = "Grip";
+    //private readonly string TRIGGER_BUTTON = "Trigger";
+    //private readonly string GRIP_BUTTON = "Grip";
 
-    private WebXRController controller;
+    //private WebXRController controller;
+    [SerializeField] Hand hand = Hand.Left;
 
 
     public bool triggerButtonDown /*{ get; private set; }*/ = false;
@@ -18,30 +24,40 @@ public class ControllerInputHandler : MonoBehaviour
     void Awake()
     {
         // Retrieve the WebXRController component.
-        controller = GetComponent<WebXRController>();
+        //controller = GetComponent<WebXRController>();
     }
 
-    void Update()
+    //WebXR
+    //void Update()
+    //{
+    //    // Controller hand being used.
+    //    WebXRControllerHand hand = controller.hand;
+
+    //    // GetButtonDown and GetButtonUp:
+    //    triggerButtonDown = controller.GetButtonDown(TRIGGER_BUTTON);
+    //    if (triggerButtonDown)
+    //    {
+    //        Debug.Log(hand + " controller Trigger is down!");
+    //        //GameManager.instance.StartGame();
+    //    }
+
+    //    if (controller.GetButtonUp(TRIGGER_BUTTON))
+    //        print(hand + " controller Trigger is up!");
+
+    //    triggerButton = controller.GetButton(TRIGGER_BUTTON);
+
+    //    // GetAxis:
+    //    if (controller.GetAxis(GRIP_BUTTON) > 0)
+    //        print(hand + " controller Grip value: " + controller.GetAxis("Grip"));
+    //}
+
+        //Oculus
+    private void Update()
     {
-        // Controller hand being used.
-        WebXRControllerHand hand = controller.hand;
-
-        // GetButtonDown and GetButtonUp:
-        triggerButtonDown = controller.GetButtonDown(TRIGGER_BUTTON);
-        if (triggerButtonDown)
-        {
-            Debug.Log(hand + " controller Trigger is down!");
-            //GameManager.instance.StartGame();
-        }
-
-        if (controller.GetButtonUp(TRIGGER_BUTTON))
-            print(hand + " controller Trigger is up!");
-
-        triggerButton = controller.GetButton(TRIGGER_BUTTON);
-
-        // GetAxis:
-        if (controller.GetAxis(GRIP_BUTTON) > 0)
-            print(hand + " controller Grip value: " + controller.GetAxis("Grip"));
+        triggerButton = OVRInput.Get(hand == Hand.Left ?
+            OVRInput.Button.PrimaryIndexTrigger : OVRInput.Button.SecondaryIndexTrigger);
+        triggerButtonDown = OVRInput.GetDown(hand == Hand.Left ?
+            OVRInput.Button.PrimaryIndexTrigger : OVRInput.Button.SecondaryIndexTrigger);
     }
 
 
@@ -51,5 +67,3 @@ public class ControllerInputHandler : MonoBehaviour
     //    return controller.GetButton(TRIGGER_BUTTON);
     //}
 }
-
-#endif

@@ -16,6 +16,10 @@ public class Virus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (GameManager.instance.isDemo)
+            return;
+
         if (GameManager.isPaused)
             return;
 

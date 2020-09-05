@@ -103,14 +103,21 @@ public class Slicer
         Plane cuttingPlane = GetCuttingPlane(cuttingPlaneTransform);
         filter.mesh = CloneMesh(cuttingPlane, filter.mesh, isLeft);
 
+
         // 3.
         half.transform.position = go.transform.position + cuttingPlaneTransform.rotation * new Vector3(sign * 0.05f, 0, 0);
-        half.GetComponent<Rigidbody>().isKinematic = false;
-        half.GetComponent<Rigidbody>().useGravity = true;
+        if (!GameManager.instance.isDemo)
+        {
+            half.GetComponent<Rigidbody>().isKinematic = false;
+            half.GetComponent<Rigidbody>().useGravity = true;
+        }
 
-        // 4.
-        half.GetComponent<Collider>().isTrigger = false;
-        GameObject.Destroy(half, 2);
+        if (!GameManager.instance.isDemo)
+        {
+            // 4.
+            half.GetComponent<Collider>().isTrigger = false;
+            GameObject.Destroy(half, 2);
+        }
 
         return half;
     }
@@ -121,6 +128,7 @@ public class Slicer
         // 1.
         GameObject leftHalf = MakeHalf(go, cuttingPlaneTransform, true);
         GameObject rightHalf = MakeHalf(go, cuttingPlaneTransform, false);
+
         return new GameObject[]{ leftHalf, rightHalf};
     }
 }

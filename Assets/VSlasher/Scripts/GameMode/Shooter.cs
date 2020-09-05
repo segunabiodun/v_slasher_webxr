@@ -10,7 +10,8 @@ public class Shooter : MonoBehaviour
     //[SerializeField] GameObject leftHandModel;
     //[SerializeField] GameObject righHandModel;
     //[SerializeField] GameObject gun;
-    [SerializeField] GameObject playerRig = null;
+    //[SerializeField] GameObject playerRig = null;
+    [SerializeField] CharacterController playerController = null;
     [SerializeField] GameObject canvas = null;
     [SerializeField] GameObject canvasCollider = null;
     [SerializeField] GameObject virusSpawner = null;
@@ -21,6 +22,9 @@ public class Shooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.isDemo)
+            return;
+
         if (GameManager.isPaused)
             return;
 
@@ -38,8 +42,8 @@ public class Shooter : MonoBehaviour
         }
 
         //move the player gradually
-
-        playerRig.transform.position += Vector3.back * playerMoveSpeed * Time.deltaTime;
+        playerController.Move(Vector3.back * playerMoveSpeed * Time.deltaTime);
+        //playerRig.transform.position += Vector3.back * playerMoveSpeed * Time.deltaTime;
         virusSpawner.transform.position += Vector3.back * playerMoveSpeed * Time.deltaTime;
         canvas.transform.position += Vector3.back * playerMoveSpeed * Time.deltaTime;
         canvasCollider.transform.position += Vector3.back * playerMoveSpeed * Time.deltaTime;

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameUI gameUI = null;
     [SerializeField] Shooter shooter = null;
+    public bool isDemo { get; private set; } = true;
 
     private void Awake()
     {
